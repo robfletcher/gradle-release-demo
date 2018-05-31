@@ -1,0 +1,43 @@
+# Java Gradle CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+defaults: &defaults
+  docker:
+    - image: circleci/openjdk:8-jdk
+  environment:
+    JVM_OPTS: -Xmx3200m
+    TERM: dumb
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: ./gradlew build
+
+  release:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: ./gradlew -Prelease.useLastTag=true final
+
+workflows:
+  version: 2
+  build-commit:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: gh-pages
+            tags:
+              ignore: /.*/
+  release-from-tag:
+    jobs:
+      - release:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
