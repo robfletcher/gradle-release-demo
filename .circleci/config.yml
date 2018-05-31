@@ -10,32 +10,36 @@ defaults: &defaults
     JVM_OPTS: -Xmx3200m
     TERM: dumb
 
-defaults: &dependency-cache
-  - restore_cache:
-      keys:
-      - v1-dependencies-{{ checksum "build.gradle" }}
-      # fallback to using the latest cache if no exact match is found
-      - v1-dependencies-
-  - run: gradle dependencies
-  - save_cache:
-      paths:
-        - ~/.gradle
-      key: v1-dependencies-{{ checksum "build.gradle" }}
-
 version: 2
 jobs:
   build:
     <<: *defaults
     steps:
       - checkout
-      <<: *dependency-cache
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
+      - run: gradle dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
       - run: ./gradlew build
 
   release:
     <<: *defaults
     steps:
       - checkout
-      <<: *dependency-cache
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "build.gradle" }}
+          - v1-dependencies-
+      - run: gradle dependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: v1-dependencies-{{ checksum "build.gradle" }}
       - run: ./gradlew -Prelease.useLastTag=true final
 
 workflows:
