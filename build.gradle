@@ -16,7 +16,7 @@ buildscript {
 allprojects {
   apply plugin: "nebula.release"
 
-  group = "io.github.robfletcher"
+  group = "io.github.maheshrajannan"
 }
 
 subprojects {

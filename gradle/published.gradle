@@ -9,9 +9,9 @@ bintray {
   pkg {
     userOrg = "empowerinnovate"
     repo = "demo"
-    websiteUrl = "https://github.com/robfletcher/gradle-release-demo"
-    issueTrackerUrl = "https://github.com/robfletcher/gradle-release-demo/issues"
-    vcsUrl = "https://github.com/robfletcher/gradle-release-demo.git"
+    websiteUrl = "https://github.com/maheshrajannan/gradle-release-demo"
+    issueTrackerUrl = "https://github.com/maheshrajannan/gradle-release-demo/issues"
+    vcsUrl = "https://github.com/maheshrajannan/gradle-release-demo.git"
     licenses = ["Apache-2.0"]
     labels = ["demo", "gradle", "bintray", "nebula"]
   }
