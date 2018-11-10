@@ -7,7 +7,7 @@ bintray {
   user = System.getenv("BINTRAY_USER")
   key = System.getenv("BINTRAY_KEY")
   pkg {
-    userOrg = "robfletcher"
+    userOrg = "empowerinnovate"
     repo = "demo"
     websiteUrl = "https://github.com/robfletcher/gradle-release-demo"
     issueTrackerUrl = "https://github.com/robfletcher/gradle-release-demo/issues"
