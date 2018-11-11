@@ -15,3 +15,5 @@ You can see the published artifacts on [Bintray](https://bintray.com/maheshrajan
 
 ![CircleCI](https://img.shields.io/circleci/project/github/maheshrajannan/gradle-release-demo.svg?style=for-the-badge)
 ![Bintray](https://img.shields.io/bintray/v/maheshrajannan/demo/demo-core.svg?style=for-the-badge)
+
+incrementing to 0.9.
